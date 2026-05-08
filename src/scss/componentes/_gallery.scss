@@ -1,0 +1,26 @@
+@use "../abstracts" as core;
+
+.cards {
+  padding: 1.25rem 0;
+
+  @include core.grid-flexible(17rem, 1.25rem);
+}
+
+.button-gallery {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: core.color(secondary);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  @include core.border_radius;
+
+  &__title {
+    margin-bottom: 1rem;
+    color: core.color(primary);
+    text-align: center;
+  }
+
+  &__grid {
+    @include core.grid-flexible(9rem, 1rem);
+  }
+}

@@ -1,0 +1,26 @@
+@use "../abstracts" as core;
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  font-family: "Jersey 10";
+  background-color: core.color(primary);
+  color: core.color(secondary);
+  font-size: 1rem;
+
+  @include core.media(medium) {
+    font-size: 0.95rem;
+  }
+
+  @include core.media(large) {
+    font-size: 1.1rem;
+  }
+
+  .div {
+    display: flex;
+    align-items: center;
+  }
+}

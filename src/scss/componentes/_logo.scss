@@ -1,0 +1,18 @@
+@use "../abstracts" as core;
+
+.imagen {
+  width: 100%;
+  height: 24rem;
+  object-fit: contain;
+}
+
+.logo{
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  transition: filter 0.3s ease, transform 0.3s ease;
+  &:hover{
+    filter: brightness(0) saturate(100%) invert(44%) sepia(99%) saturate(715%) hue-rotate(91deg) brightness(95%) contrast(90%);
+      transform: scale(1.1);
+  }
+}

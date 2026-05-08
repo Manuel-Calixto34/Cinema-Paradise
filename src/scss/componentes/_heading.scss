@@ -1,0 +1,13 @@
+@use "../abstracts" as core;
+
+.heading {
+  text-align: center;
+  grid-column: 2;
+
+  &-title {
+    margin-bottom: 0.4rem;
+    font-family: "Macondo",cursive;
+  }
+}
+
+@include core.cabeceras;

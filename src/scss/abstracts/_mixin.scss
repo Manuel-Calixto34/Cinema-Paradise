@@ -1,0 +1,100 @@
+//// Proyecto: ejemplo SaSSdoc
+@use "variables" as vars;
+@use "sass:color";
+@use "sass:map";
+
+/// Aplica un borde sólido y un radio de esquina estándar
+/// @group Estilos Base
+@mixin border_radius {
+  border: 0.1rem solid vars.color(primary);
+  border-radius: 0.5rem;
+}
+
+/// Mixin MQ
+$sizes: (
+  small: 576px,
+  medium: 768px,
+  large: 992px,
+  xlarge: 1200px,
+  xxlarge: 1400px
+);
+
+@mixin media($clave) {
+  $size: map.get($sizes, $clave);
+
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+
+/// Configuración rápida de Flexbox
+/// @group Layout
+/// @param {String} $direction [row] - Dirección del flex
+/// @param {String} $justifycontent [center] - Alineación horizontal
+/// @param {String} $alignitem [center] - Alineación vertical
+/// @example scss - uso del mixin flexposition
+/// .footer {
+///     @include core.flexposition(column, center, center);
+/// }
+@mixin flexposition($direction: row, $justifycontent: center, $alignitem: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justifycontent;
+  align-items: $alignitem;
+}
+
+@mixin layout_basico() {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) repeat(7, minmax(min-content, 16rem)) minmax(10rem, 1fr);
+  grid-template-rows: repeat(3, min-content);
+  grid-gap: 2rem;
+  z-index: 100;
+}
+
+/// Crea una rejilla flexible con columnas auto-ajustables
+/// @group Layout
+/// @param {Number} $min-size [18rem] - Tamaño mínimo de cada columna
+/// @param {Number} $gap [1.5rem] - Espaciado entre celdas
+/// @example
+///     .products-list{
+///         @include core.grid-flexible(18rem, 1.5rem);
+/// }
+@mixin grid-flexible($min-size: 18rem, $gap: 1.5rem) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-size, 1fr));
+  gap: $gap;
+}
+
+/* Menú Navegación */
+@mixin navigation() {
+  &-list {
+    @include flexposition(row, space-around);
+    height: 100%;
+  }
+
+  &-item {
+    list-style-type: none;
+  }
+
+  &-link {
+    color: vars.color(primary);
+    font-size: vars.size(xs);
+    text-decoration: none;
+    transition: all 0.5s;
+
+    &:hover {
+      color: color.adjust(vars.color(quaternary), $lightness: 10%);
+    }
+  }
+}
+
+/* Cabeceras dinámicas */
+@mixin cabeceras {
+  @for $i from 1 through 3 {
+    h#{$i} {
+      font-family: vars.$font-family;
+      font-size: vars.size(sm) * 2;
+      font-weight: vars.weight("light");
+    }
+  }
+}

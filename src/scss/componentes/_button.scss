@@ -1,0 +1,42 @@
+@use "../abstracts" as core;
+
+.btn {
+  @include core.flexposition(row, center, center);
+  min-height: 2.75rem;
+  padding: 0.85rem 1.2rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background-color: core.color(primary);
+  color: core.color(secondary);
+  cursor: pointer;
+  font-weight: core.weight(semibold);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  &:focus {
+    outline: 2px solid core.color(quaternary);
+    outline-offset: 3px;
+  }
+
+  &--secondary {
+    border: 2px solid core.color(primary);
+    background-color: core.color(secondary);
+    color: core.color(primary);
+  }
+
+  &--menu {
+    background-color: core.color(tertiary);
+  }
+
+  &--active {
+    background-color: core.color(quaternary);
+  }
+
+  &--logo {
+    background-color: core.color(logo);
+  }
+}

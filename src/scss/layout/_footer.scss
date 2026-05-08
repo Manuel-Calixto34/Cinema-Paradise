@@ -1,0 +1,43 @@
+@use "../abstracts" as core;
+
+.footer {
+  margin-top: 2rem;
+  background-color: core.color(primary);
+  color: core.color(secondary);
+
+  &__content {
+    @include core.flexposition(column, center, center);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+
+    @include core.media(large) {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  &__info {
+    @include core.flexposition(column, center, center);
+    gap: 0.4rem;
+  }
+
+  &__links {
+    @include core.flexposition(row, center, center);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__link {
+    color: core.color(secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: core.color(quaternary);
+    }
+  }
+}

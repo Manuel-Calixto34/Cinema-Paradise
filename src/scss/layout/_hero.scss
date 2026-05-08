@@ -1,0 +1,51 @@
+@use "../abstracts" as core;
+
+.hero {
+  @include core.flexposition(column, center, center);
+  position: relative;
+  overflow: hidden;
+  gap: 1rem;
+  min-height: 80vh;
+  margin: 0;
+  color: core.color(secondary);
+  text-align: center;
+
+  @include core.border_radius;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+  }
+
+  &__title {
+    position: relative;
+    z-index: 2;
+    max-width: 42rem;
+    font-family: "Macondo", cursive;
+    font-size: core.size(lg);
+    font-weight: core.weight(bold);
+    text-shadow: 0 0.15rem 0.4rem rgba(0, 0, 0, 0.7);
+  }
+
+  &__text {
+    position: relative;
+    z-index: 2;
+    max-width: 38rem;
+    font-family: "Jersey 10";
+    font-size: core.size(sm);
+    line-height: 1.5;
+    text-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.7);
+  }
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.65;
+  }
+}

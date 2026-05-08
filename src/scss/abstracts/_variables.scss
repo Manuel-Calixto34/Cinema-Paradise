@@ -1,0 +1,42 @@
+@use "sass:map";
+
+//// Proyecto: Landing Page Parcel
+
+$colors: (
+  primary: #7215ab,
+  secondary: #ffffff,
+  tertiary: #008000,
+  quaternary: #16c952,
+  logo: #ff0095,
+  text: #27323a,
+  surface: #f4fbfc
+);
+
+@function color($clave) {
+  @return map.get($colors, $clave);
+}
+
+$font-family: Geneva, Arial, sans-serif;
+$fuente: $font-family;
+
+$font-sizes: (
+  xs: 1rem,
+  sm: 1.25rem,
+  md: 1.75rem,
+  lg: 2.5rem
+);
+
+@function size($clave) {
+  @return map.get($font-sizes, $clave);
+}
+
+$font-weights: (
+  light: 300,
+  regular: 400,
+  semibold: 600,
+  bold: 700
+);
+
+@function weight($clave) {
+  @return map.get($font-weights, $clave);
+}

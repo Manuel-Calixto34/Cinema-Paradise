@@ -1,0 +1,40 @@
+@use "../abstracts" as core;
+
+.first {
+  &-lista {
+    @include core.flexposition(row, flex-end, center);
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style: none;
+  }
+
+  &-item a {
+    color: core.color(secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: core.color(quaternary);
+    }
+  }
+}
+
+.second {
+  &-lista {
+    @include core.flexposition(row, center, center);
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    list-style: none;
+    grid-column: 3;
+  }
+
+  &-item a {
+    color: core.color(secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: core.color(quaternary);
+    }
+  }
+}

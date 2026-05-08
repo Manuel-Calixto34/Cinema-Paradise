@@ -1,0 +1,17 @@
+@use "../abstracts" as core;
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: core.color(surface);
+  color: core.color(text);
+  font-family: core.$font-family;
+}
+
+main {
+  padding: 0 1rem 1rem;
+}
+
+a {
+  color: inherit;
+}
