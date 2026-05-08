@@ -19,22 +19,26 @@
   }
 }
 
-.second {
-  &-lista {
-    @include core.flexposition(row, center, center);
-    flex-wrap: wrap;
+.lista {
+  @include core.flexposition(column, center, center);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+  grid-column: 3;
+
+  @include core.media(medium) {
+    flex-direction: row;
     gap: 1.5rem;
-    list-style: none;
-    grid-column: 3;
   }
+}
 
-  &-item a {
-    color: core.color(secondary);
-    text-decoration: none;
-    transition: color 0.3s ease;
+.item a {
+  color: core.color(secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
 
-    &:hover {
-      color: core.color(quaternary);
-    }
+  &:hover {
+    color: core.color(quaternary);
   }
 }

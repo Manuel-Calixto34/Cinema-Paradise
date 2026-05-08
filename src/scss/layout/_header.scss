@@ -1,21 +1,24 @@
 @use "../abstracts" as core;
 
 .cabecera {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1.5rem;
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  padding: 1rem;
   font-family: "Jersey 10";
   background-color: core.color(primary);
   color: core.color(secondary);
   font-size: 1rem;
 
   @include core.media(medium) {
+    grid-template-columns: auto 1fr;
+    align-items: center;
     font-size: 0.95rem;
   }
 
   @include core.media(large) {
+    grid-template-columns: auto 1fr auto;
+    padding: 1.5rem;
     font-size: 1.1rem;
   }
 

@@ -1,26 +1,30 @@
 @use "../abstracts" as core;
 
 .cards {
-  padding: 1.25rem 0;
+  padding: 1.25rem 0.75rem;
 
-  @include core.grid-flexible(17rem, 1.25rem);
-}
+  @include core.grid-flexible(15rem, 1rem);
 
-.button-gallery {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background-color: core.color(secondary);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-  @include core.border_radius;
-
-  &__title {
-    margin-bottom: 1rem;
-    color: core.color(primary);
-    text-align: center;
+  @include core.media(medium) {
+    padding-inline: 1rem;
+    @include core.grid-flexible(17rem, 1.25rem);
   }
 
-  &__grid {
-    @include core.grid-flexible(9rem, 1rem);
+  @include core.media(large) {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &_title{
+      grid-column: 1 / -1;
+      margin: 0 0 1rem;
+      font-family: "Macondo", cursive;
+      font-size: 2rem;
+      text-align: center;
+      color: core.color(primary);
+
+      @include core.media(medium) {
+        font-size: 2.4rem;
+      }
   }
 }
