@@ -3,14 +3,37 @@
 @use "sass:color";
 @use "sass:map";
 
-/// Aplica un borde sólido y un radio de esquina estándar
+/// Aplica un borde solido y un radio de esquina estandar.
 /// @group Estilos Base
+/// @example scss
+///   .card {
+///     @include core.border_radius;
+///   }
 @mixin border_radius {
   border: 0.1rem solid vars.color(primary);
   border-radius: 0.5rem;
 }
 
-/// Mixin MQ
+/// Aplica una elevacion suave cuando el elemento esta en hover.
+/// @group Interaccion
+/// @param {Number} $distance [-0.25rem] - Desplazamiento vertical del elemento.
+/// @param {List} $shadow [0 4px 10px rgba(0, 0, 0, 0.15)] - Sombra aplicada en hover.
+/// @example scss - uso del mixin hover-elevado
+///   .card {
+///     @include core.hover-elevado(-0.2rem);
+///   }
+@mixin hover-elevado($distance: -0.25rem, $shadow: 0 4px 10px rgba(0, 0, 0, 0.15)) {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY($distance);
+    box-shadow: $shadow;
+  }
+}
+
+/// Puntos de ruptura disponibles para los media queries del proyecto.
+/// @group Variables
+/// @type Map
 $sizes: (
   small: 576px,
   medium: 768px,
@@ -19,6 +42,16 @@ $sizes: (
   xxlarge: 1400px
 );
 
+/// Crea un media query desde una clave definida en `$sizes`.
+/// @group Layout
+/// @param {String} $clave - Clave del breakpoint que se quiere utilizar.
+/// @content Reglas CSS que se aplican dentro del media query.
+/// @example scss
+///   .hero {
+///     @include core.media(medium) {
+///       padding: 2rem;
+///     }
+///   }
 @mixin media($clave) {
   $size: map.get($sizes, $clave);
 
@@ -27,15 +60,15 @@ $sizes: (
   }
 }
 
-/// Configuración rápida de Flexbox
+/// Configuracion rapida de Flexbox.
 /// @group Layout
-/// @param {String} $direction [row] - Dirección del flex
-/// @param {String} $justifycontent [center] - Alineación horizontal
-/// @param {String} $alignitem [center] - Alineación vertical
+/// @param {String} $direction [row] - Direccion del eje principal.
+/// @param {String} $justifycontent [center] - Alineacion horizontal.
+/// @param {String} $alignitem [center] - Alineacion vertical.
 /// @example scss - uso del mixin flexposition
-/// .footer {
+///   .footer {
 ///     @include core.flexposition(column, center, center);
-/// }
+///   }
 @mixin flexposition($direction: row, $justifycontent: center, $alignitem: center) {
   display: flex;
   flex-direction: $direction;
@@ -43,6 +76,12 @@ $sizes: (
   align-items: $alignitem;
 }
 
+/// Crea la estructura de grid principal para layouts amplios.
+/// @group Layout
+/// @example scss
+///   .main-layout {
+///     @include core.layout_basico;
+///   }
 @mixin layout_basico() {
   display: grid;
   grid-template-columns: minmax(10rem, 1fr) repeat(7, minmax(min-content, 16rem)) minmax(10rem, 1fr);
@@ -51,21 +90,26 @@ $sizes: (
   z-index: 100;
 }
 
-/// Crea una rejilla flexible con columnas auto-ajustables
+/// Crea una rejilla flexible con columnas auto-ajustables.
 /// @group Layout
-/// @param {Number} $min-size [18rem] - Tamaño mínimo de cada columna
-/// @param {Number} $gap [1.5rem] - Espaciado entre celdas
-/// @example
-///     .products-list{
-///         @include core.grid-flexible(18rem, 1.5rem);
-/// }
+/// @param {Number} $min-size [18rem] - Tamano minimo de cada columna.
+/// @param {Number} $gap [1.5rem] - Espaciado entre celdas.
+/// @example scss
+///   .products-list {
+///     @include core.grid-flexible(18rem, 1.5rem);
+///   }
 @mixin grid-flexible($min-size: 18rem, $gap: 1.5rem) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax($min-size, 1fr));
   gap: $gap;
 }
 
-/* Menú Navegación */
+/// Genera los estilos BEM basicos de un menu de navegacion.
+/// @group Componentes
+/// @example scss
+///   .navigation {
+///     @include core.navigation;
+///   }
 @mixin navigation() {
   &-list {
     @include flexposition(row, space-around);
@@ -88,7 +132,12 @@ $sizes: (
   }
 }
 
-/* Cabeceras dinámicas */
+/// Genera estilos comunes para las cabeceras h1, h2 y h3.
+/// @group Estilos Base
+/// @example scss
+///   body {
+///     @include core.cabeceras;
+///   }
 @mixin cabeceras {
   @for $i from 1 through 3 {
     h#{$i} {

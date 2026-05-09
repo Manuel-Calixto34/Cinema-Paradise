@@ -2,6 +2,9 @@
 
 //// Proyecto: Landing Page Parcel
 
+/// Paleta de colores principal del proyecto.
+/// @group Variables
+/// @type Map
 $colors: (
   primary: #7215ab,
   secondary: #ffffff,
@@ -12,13 +15,29 @@ $colors: (
   surface: #f4fbfc
 );
 
+/// Devuelve un color de la paleta a partir de su clave.
+/// @group Funciones
+/// @param {String} $clave - Nombre del color dentro del mapa `$colors`.
+/// @return {Color} Color asociado a la clave indicada.
+/// @example scss
+///   color: color(primary);
 @function color($clave) {
   @return map.get($colors, $clave);
 }
 
+/// Familia tipografica base del proyecto.
+/// @group Variables
+/// @type List
 $font-family: Geneva, Arial, sans-serif;
+
+/// Alias de la familia tipografica base.
+/// @group Variables
+/// @type List
 $fuente: $font-family;
 
+/// Escala de tamanos de fuente reutilizable.
+/// @group Variables
+/// @type Map
 $font-sizes: (
   xs: 1rem,
   sm: 1.25rem,
@@ -26,10 +45,19 @@ $font-sizes: (
   lg: 2.5rem
 );
 
+/// Devuelve un tamano de fuente a partir de su clave.
+/// @group Funciones
+/// @param {String} $clave - Nombre del tamano dentro del mapa `$font-sizes`.
+/// @return {Number} Tamano de fuente asociado a la clave indicada.
+/// @example scss
+///   font-size: size(md);
 @function size($clave) {
   @return map.get($font-sizes, $clave);
 }
 
+/// Pesos tipograficos disponibles en el proyecto.
+/// @group Variables
+/// @type Map
 $font-weights: (
   light: 300,
   regular: 400,
@@ -37,6 +65,12 @@ $font-weights: (
   bold: 700
 );
 
+/// Devuelve un peso tipografico a partir de su clave.
+/// @group Funciones
+/// @param {String} $clave - Nombre del peso dentro del mapa `$font-weights`.
+/// @return {Number} Peso tipografico asociado a la clave indicada.
+/// @example scss
+///   font-weight: weight(semibold);
 @function weight($clave) {
   @return map.get($font-weights, $clave);
 }

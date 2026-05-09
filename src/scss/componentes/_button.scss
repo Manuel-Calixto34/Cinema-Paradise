@@ -10,12 +10,7 @@
   color: core.color(secondary);
   cursor: pointer;
   font-weight: core.weight(semibold);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  }
+  @include core.hover-elevado(-5px);
 
   &:focus {
     outline: 2px solid core.color(quaternary);

@@ -11,15 +11,10 @@
   font-family: "Jersey 10";
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-  transition: transform 0.4s ease, box-shadow 0.2s ease;
+  @include core.hover-elevado(-2px);
   
   h2{
     font-family: "Macondo",cursive;
-  }
-
-  &:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
 
   @include core.border_radius;
