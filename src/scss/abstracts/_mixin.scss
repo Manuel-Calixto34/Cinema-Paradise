@@ -1,4 +1,5 @@
 //// Proyecto: ejemplo SaSSdoc
+//// @author manuelcalixto
 @use "variables" as vars;
 @use "sass:color";
 @use "sass:map";
@@ -10,8 +11,8 @@
 ///     @include core.border_radius;
 ///   }
 @mixin border_radius {
-  border: 0.1rem solid vars.color(primary);
-  border-radius: 0.5rem;
+  border: vars.get-border(1) solid vars.color(primary);
+  border-radius: vars.get-border(3);
 }
 
 /// Aplica una elevacion suave cuando el elemento esta en hover.

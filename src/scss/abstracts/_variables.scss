@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:list";
 
 //// Proyecto: Landing Page Parcel
 
@@ -12,7 +13,8 @@ $colors: (
   quaternary: #16c952,
   logo: #ff0095,
   text: #27323a,
-  surface: #f4fbfc
+  surface: #f4fbfc,
+  border: #dddddd
 );
 
 /// Devuelve un color de la paleta a partir de su clave.
@@ -22,7 +24,11 @@ $colors: (
 /// @example scss
 ///   color: color(primary);
 @function color($clave) {
-  @return map.get($colors, $clave);
+  @if map.has-key($colors, $clave) {
+    @return map.get($colors, $clave);
+  }
+
+  @error "El color '#{$clave}' no existe en el mapa $colors.";
 }
 
 /// Familia tipografica base del proyecto.
@@ -42,7 +48,9 @@ $font-sizes: (
   xs: 1rem,
   sm: 1.25rem,
   md: 1.75rem,
-  lg: 2.5rem
+  lg: 2.5rem,
+  xl: 3rem,
+  xxl: 6rem
 );
 
 /// Devuelve un tamano de fuente a partir de su clave.
@@ -52,7 +60,11 @@ $font-sizes: (
 /// @example scss
 ///   font-size: size(md);
 @function size($clave) {
-  @return map.get($font-sizes, $clave);
+  @if map.has-key($font-sizes, $clave) {
+    @return map.get($font-sizes, $clave);
+  }
+
+  @error "El tamano '#{$clave}' no existe en el mapa $font-sizes.";
 }
 
 /// Pesos tipograficos disponibles en el proyecto.
@@ -72,5 +84,28 @@ $font-weights: (
 /// @example scss
 ///   font-weight: weight(semibold);
 @function weight($clave) {
-  @return map.get($font-weights, $clave);
+  @if map.has-key($font-weights, $clave) {
+    @return map.get($font-weights, $clave);
+  }
+
+  @error "El peso '#{$clave}' no existe en el mapa $font-weights.";
+}
+
+/// Grosores y radios de borde disponibles.
+/// @group Variables
+/// @type List
+$borders: (1px, 2px, 5px, 10px);
+
+/// Devuelve un valor de borde a partir de su posicion en `$borders`.
+/// @group Funciones
+/// @param {Number} $index - Posicion del valor dentro de la lista `$borders`.
+/// @return {Number} Valor de borde asociado al indice indicado.
+/// @example scss
+///   border-width: get-border(2);
+@function get-border($index) {
+  @if $index > list.length($borders) or $index <= 0 {
+    @error "Indice no existe. La lista solo tiene #{list.length($borders)} elementos.";
+  }
+
+  @return list.nth($borders, $index);
 }

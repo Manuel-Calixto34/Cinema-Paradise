@@ -40,7 +40,7 @@
         font-family: "Macondo",cursive;
         font-size: 1.7rem;
         text-align: center;
-        color: white;
+        color: core.color(secondary);
 
         @include core.media(medium) {
             font-size: 2rem;
@@ -51,23 +51,22 @@
         margin: 0 0 0.5rem;
         font-family: "Jersey 10";
         text-align: center;
-        color: white;
+        color: core.color(secondary);
         line-height: 1.5;
     }
 
     label{
-        color: white;
+        color: core.color(secondary);
         font-family: "Jersey 10";
     }
 
     input {
         width: 100%;
         padding: 0.8rem 1rem;
-        border: 2px solid #ddd;
         font-family: "Open Sans", sans-serif;
         font-size: 1rem;
-
-        @include core.border_radius;
+        border: core.get-border(2) solid core.color(border);
+        border-radius: core.get-border(3);
 
         &:focus {
         outline: none;

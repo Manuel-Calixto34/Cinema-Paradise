@@ -5,20 +5,20 @@
   min-height: 2.75rem;
   padding: 0.85rem 1.2rem;
   border: 0;
-  border-radius: 0.5rem;
-  background-color: core.color(primary);
-  color: core.color(secondary);
+  border-radius: core.get-border(3);
+  background-color: core.color(secondary);
+  color: core.color(primary);
   cursor: pointer;
   font-weight: core.weight(semibold);
   @include core.hover-elevado(-5px);
 
   &:focus {
-    outline: 2px solid core.color(quaternary);
+    outline: core.get-border(2) solid core.color(quaternary);
     outline-offset: 3px;
   }
 
   &--secondary {
-    border: 2px solid core.color(primary);
+    border: core.get-border(2) solid core.color(primary);
     background-color: core.color(secondary);
     color: core.color(primary);
   }
